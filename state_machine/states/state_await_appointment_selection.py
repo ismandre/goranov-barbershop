@@ -2,8 +2,7 @@ from typing import override
 
 from actions.action import Action
 from actions.action_type import ActionType
-from state import State
-from states.state_show_available_appointments import StateShowAvailableAppointments
+from states.state import State
 
 
 class StateAwaitAppointmentSelection(State):
@@ -15,6 +14,7 @@ class StateAwaitAppointmentSelection(State):
     @override
     def on_action(self, action: Action) -> State:
         if action.type == ActionType.ACTION_CONTINUE:
+            from states.state_show_available_appointments import StateShowAvailableAppointments
             return StateShowAvailableAppointments()
 
         return self

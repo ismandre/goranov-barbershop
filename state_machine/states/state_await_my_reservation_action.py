@@ -2,7 +2,7 @@ from typing import override
 
 from actions.action import Action
 from actions.action_type import ActionType
-from state import State
+from states.state import State
 from states.state_idle import StateIdle
 from states.state_show_available_appointments import StateShowAvailableAppointments
 

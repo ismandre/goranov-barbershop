@@ -1,9 +1,7 @@
 from typing import override
 
 from actions.action import Action
-from state import State
-from states.state_main_menu import StateMainMenu
-
+from states.state import State
 
 class StateIdle(State):
     """
@@ -13,4 +11,5 @@ class StateIdle(State):
 
     @override
     def on_action(self, action: Action) -> State:
+        from .state_main_menu import StateMainMenu
         return StateMainMenu()

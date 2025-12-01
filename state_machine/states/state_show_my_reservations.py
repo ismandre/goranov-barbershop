@@ -1,7 +1,7 @@
 from typing import override
 
 from actions.action import Action
-from state import State
+from states.state import State
 from states.state_await_my_reservation_action import StateAwaitMyReservationAction
 
 

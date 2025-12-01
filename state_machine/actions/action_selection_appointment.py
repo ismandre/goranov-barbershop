@@ -1,0 +1,2 @@
+class ActionSelectionAppointment:
+    pass

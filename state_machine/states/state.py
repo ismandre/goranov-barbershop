@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from action import Action
+from actions.action import Action
 
 
 class State(ABC):

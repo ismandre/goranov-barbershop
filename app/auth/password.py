@@ -1,6 +1,6 @@
 """Password hashing and verification utilities."""
 
-from passlib.hash import bcrypt
+import bcrypt
 
 
 def hash_password(password: str) -> str:
@@ -13,7 +13,19 @@ def hash_password(password: str) -> str:
     Returns:
         Hashed password string
     """
-    return bcrypt.hash(password)
+    # Encode password to bytes
+    password_bytes = password.encode('utf-8')
+
+    # Validate password length (bcrypt has 72 byte limit)
+    if len(password_bytes) > 72:
+        raise ValueError("Password is too long. Maximum 72 bytes allowed.")
+
+    # Generate salt and hash
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password_bytes, salt)
+
+    # Return as string
+    return hashed.decode('utf-8')
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -27,4 +39,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     Returns:
         True if password matches, False otherwise
     """
-    return bcrypt.verify(plain_password, hashed_password)
+    password_bytes = plain_password.encode('utf-8')
+    hashed_bytes = hashed_password.encode('utf-8')
+
+    return bcrypt.checkpw(password_bytes, hashed_bytes)

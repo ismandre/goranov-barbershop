@@ -19,11 +19,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.database.connection import get_db
 from app.database.models import Admin
-from passlib.hash import bcrypt
+from app.auth.password import hash_password
 
 
 def create_admin(username: str, password: str, phone_number: str = None):
     """Create an admin user with hashed password."""
+    # Validate password length (bcrypt has 72 byte limit)
+    if len(password.encode('utf-8')) > 72:
+        print(f"❌ Password is too long. Please use a password with 72 bytes or less.")
+        return False
+
     with get_db() as db:
         # Check if admin already exists
         existing_admin = db.query(Admin).filter(Admin.username == username).first()
@@ -32,7 +37,7 @@ def create_admin(username: str, password: str, phone_number: str = None):
             return False
 
         # Hash password
-        password_hash = bcrypt.hash(password)
+        password_hash = hash_password(password)
 
         # Create admin
         admin = Admin(
@@ -81,7 +86,7 @@ def main():
 
     # Get phone (optional)
     phone_number = args.phone
-    if not phone_number:
+    if not phone_number and not args.password:  # Only prompt if in interactive mode
         phone_number = input("Enter phone number (optional, press Enter to skip): ").strip() or None
 
     # Create admin

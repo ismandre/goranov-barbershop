@@ -32,8 +32,10 @@
       <p class="text-gray-500 mt-4">Učitavanje...</p>
     </div>
 
-    <!-- Mobile View - List -->
-    <div v-else class="lg:hidden space-y-3">
+    <!-- Calendar Views -->
+    <div v-else>
+      <!-- Mobile View - List -->
+      <div class="lg:hidden space-y-3">
       <div
         v-for="(date, index) in currentWeek"
         :key="index"
@@ -94,10 +96,10 @@
           Nema termina
         </div>
       </div>
-    </div>
+      </div>
 
-    <!-- Desktop View - Calendar Grid -->
-    <div v-else class="card hidden lg:block overflow-x-auto">
+      <!-- Desktop View - Calendar Grid -->
+      <div class="card hidden lg:block overflow-x-auto">
       <div class="grid grid-cols-7 gap-px bg-gray-200 min-w-[800px]">
         <!-- Day headers -->
         <div v-for="(day, index) in weekDaysShort" :key="day" class="bg-gray-50 p-3 text-center">
@@ -145,6 +147,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 

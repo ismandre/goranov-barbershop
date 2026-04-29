@@ -6,6 +6,9 @@ from typing import List, Optional, Any
 from sqlalchemy.orm import Session
 
 from app.database.models import AvailableSlot, Appointment
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 class AppointmentService:
@@ -64,14 +67,30 @@ class AppointmentService:
         slot_id: int,
         notes: Optional[str] = None
     ) -> Optional[Appointment]:
-        """Book an appointment if slot is available."""
-        # Check if slot exists and is available
-        slot = db.query(AvailableSlot).filter(
-            AvailableSlot.id == slot_id,
-            AvailableSlot.is_booked == False
-        ).first()
+        """Book an appointment if slot is available.
 
-        if not slot:
+        Uses pessimistic locking (SELECT FOR UPDATE) to prevent race conditions
+        where multiple concurrent requests try to book the same slot.
+        """
+        # Check if slot exists and is available with row-level lock
+        # This prevents other transactions from reading/modifying this row
+        # until our transaction completes (commit or rollback)
+        slot = db.query(AvailableSlot).filter(
+            AvailableSlot.id == slot_id
+        ).with_for_update().first()
+
+        # Verify slot exists and is not already booked
+        if not slot or slot.is_booked:
+            if slot and slot.is_booked:
+                logger.warning(
+                    f"Attempted to book already booked slot",
+                    extra={"user_id": user_id, "slot_id": slot_id}
+                )
+            else:
+                logger.warning(
+                    f"Attempted to book non-existent slot",
+                    extra={"user_id": user_id, "slot_id": slot_id}
+                )
             return None
 
         # Create appointment
@@ -89,6 +108,16 @@ class AppointmentService:
         db.commit()
         db.refresh(appointment)
 
+        logger.info(
+            f"Appointment booked successfully",
+            extra={
+                "user_id": user_id,
+                "slot_id": slot_id,
+                "appointment_id": appointment.id,
+                "start_time": slot.start_time.isoformat()
+            }
+        )
+
         return appointment
 
     @staticmethod
@@ -100,6 +129,10 @@ class AppointmentService:
         ).first()
 
         if not appointment:
+            logger.warning(
+                f"Attempted to cancel non-existent or unauthorized appointment",
+                extra={"appointment_id": appointment_id, "user_id": user_id}
+            )
             return False
 
         # Update appointment status
@@ -115,6 +148,16 @@ class AppointmentService:
             slot.is_booked = False
 
         db.commit()
+
+        logger.info(
+            f"Appointment cancelled successfully",
+            extra={
+                "appointment_id": appointment_id,
+                "user_id": user_id,
+                "slot_id": appointment.slot_id
+            }
+        )
+
         return True
 
     @staticmethod

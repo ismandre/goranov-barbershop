@@ -77,6 +77,14 @@ def handle_state_transition(sender: str, message: str) -> str:
     Returns:
         Response message to send back to user
     """
+    # Validate message length (already done in webhook, but good to double-check)
+    if not message or len(message.strip()) == 0:
+        return "Molim te pošalji poruku s sadržajem."
+
+    # Truncate very long messages (safety check)
+    if len(message) > 1600:
+        message = message[:1600]
+
     # Clean phone number (remove 'whatsapp:' prefix if present)
     phone_number = sender.replace('whatsapp:', '')
 

@@ -140,40 +140,42 @@
         <p class="text-gray-400 text-sm mt-2">Dodajte nove termine gore</p>
       </div>
 
-      <!-- Mobile View - Cards -->
-      <div v-else class="lg:hidden space-y-3">
-        <div
-          v-for="slot in slots"
-          :key="slot.id"
-          class="p-4 border rounded-lg"
-          :class="slot.is_booked ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'"
-        >
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <div class="text-sm text-gray-600">{{ formatDate(slot.start_time) }}</div>
-              <div class="text-lg font-bold text-gray-900">
-                {{ formatTime(slot.start_time) }} - {{ formatTime(slot.end_time) }}
-              </div>
-              <div class="text-sm text-gray-600 mt-1">{{ calculateDuration(slot.start_time, slot.end_time) }} min</div>
-            </div>
-            <span v-if="slot.is_booked" class="badge bg-red-100 text-red-800 text-sm">Zauzeto</span>
-            <span v-else class="badge bg-green-100 text-green-800 text-sm">Slobodno</span>
-          </div>
-          <button
-            v-if="!slot.is_booked"
-            @click="deleteSlot(slot.id)"
-            class="btn btn-danger w-full text-sm py-2"
+      <!-- Mobile & Desktop Views -->
+      <div v-else>
+        <!-- Mobile View - Cards -->
+        <div class="lg:hidden space-y-3">
+          <div
+            v-for="slot in slots"
+            :key="slot.id"
+            class="p-4 border rounded-lg"
+            :class="slot.is_booked ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'"
           >
-            Obriši termin
-          </button>
-          <div v-else class="text-center text-sm text-gray-500 py-2">
-            Ne može se obrisati rezerviran termin
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <div class="text-sm text-gray-600">{{ formatDate(slot.start_time) }}</div>
+                <div class="text-lg font-bold text-gray-900">
+                  {{ formatTime(slot.start_time) }} - {{ formatTime(slot.end_time) }}
+                </div>
+                <div class="text-sm text-gray-600 mt-1">{{ calculateDuration(slot.start_time, slot.end_time) }} min</div>
+              </div>
+              <span v-if="slot.is_booked" class="badge bg-red-100 text-red-800 text-sm">Zauzeto</span>
+              <span v-else class="badge bg-green-100 text-green-800 text-sm">Slobodno</span>
+            </div>
+            <button
+              v-if="!slot.is_booked"
+              @click="deleteSlot(slot.id)"
+              class="btn btn-danger w-full text-sm py-2"
+            >
+              Obriši termin
+            </button>
+            <div v-else class="text-center text-sm text-gray-500 py-2">
+              Ne može se obrisati rezerviran termin
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Desktop View - Table -->
-      <div v-else class="overflow-x-auto hidden lg:block">
+        <!-- Desktop View - Table -->
+        <div class="overflow-x-auto hidden lg:block">
         <table class="w-full">
           <thead class="bg-gray-50 border-b border-gray-200">
             <tr>
@@ -211,6 +213,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>

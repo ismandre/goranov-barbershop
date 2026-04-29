@@ -7,6 +7,9 @@ import json
 from sqlalchemy.orm import Session
 
 from app.database.models import User, UserState, ConversationHistory
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 class UserService:
@@ -70,7 +73,15 @@ class UserService:
 
         try:
             return json.loads(user_state.context)
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            logger.error(
+                f"Failed to parse user state context JSON",
+                exc_info=True,
+                extra={
+                    "user_id": user_state.user_id if user_state else None,
+                    "context_value": user_state.context if user_state else None
+                }
+            )
             return {}
 
     @staticmethod

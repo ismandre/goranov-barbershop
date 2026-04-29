@@ -1,0 +1,179 @@
+2026-04-29 20:32:47 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:32:57 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:33:02 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:33:08 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:33:13 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:33:36 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:33:47 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:34:29 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:34:38 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:34:42 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:35:06 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:35:10 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:35:23 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:35:50 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:36:02 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:36:04 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:36:54 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:03 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:03 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:03 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:03 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:03 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:03 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:03 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:03 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:03 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:03 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:03 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:33 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:37 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:37 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:37 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:45 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:53 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:37:54 - httpx - INFO - HTTP Request: POST http://testserver/admin/auth/login "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:54 - httpx - INFO - HTTP Request: POST http://testserver/admin/auth/login "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:54 - httpx - INFO - HTTP Request: POST http://testserver/admin/auth/login "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:54 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:55 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:55 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments?status=confirmed "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:55 - httpx - INFO - HTTP Request: PATCH http://testserver/admin/appointments/1 "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:55 - httpx - INFO - HTTP Request: PATCH http://testserver/admin/appointments/1 "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:56 - httpx - INFO - HTTP Request: PATCH http://testserver/admin/appointments/99999 "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:56 - httpx - INFO - HTTP Request: GET http://testserver/admin/slots/available "HTTP/1.1 405 Method Not Allowed"
+2026-04-29 20:37:56 - httpx - INFO - HTTP Request: POST http://testserver/admin/slots "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:56 - httpx - INFO - HTTP Request: DELETE http://testserver/admin/slots/1 "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:56 - httpx - INFO - HTTP Request: DELETE http://testserver/admin/slots/1 "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: GET http://testserver/admin/dashboard/stats "HTTP/1.1 404 Not Found"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: GET http://testserver/admin/appointments "HTTP/1.1 401 Unauthorized"
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book non-existent slot
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment cancelled successfully
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to cancel non-existent or unauthorized appointment
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to cancel non-existent or unauthorized appointment
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385991234567
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385991234567
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 422 Unprocessable Entity"
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 422 Unprocessable Entity"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385991111111
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385991111111
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385992222222
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385992222222
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385992222222
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385992222222
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385993333333
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385993333333
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385993333333
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385993333333
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385993333333
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385993333333
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385994444444
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385994444444
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385995555555
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385995555555
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385996666666
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385996666666
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:37:57 - app.main - INFO - Incoming WhatsApp message from +385997777777
+2026-04-29 20:37:57 - app.main - INFO - Sending reply to +385997777777
+2026-04-29 20:37:57 - httpx - INFO - HTTP Request: POST http://testserver/whatsapp/webhook "HTTP/1.1 200 OK"
+2026-04-29 20:40:09 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:09 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:10 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - root - INFO - Logging initialized: level=INFO, format=text, dir=logs
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book non-existent slot
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment cancelled successfully
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to cancel non-existent or unauthorized appointment
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to cancel non-existent or unauthorized appointment
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - WARNING - Attempted to book already booked slot
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully
+2026-04-29 20:40:11 - app.services.appointment_service - INFO - Appointment booked successfully

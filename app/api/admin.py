@@ -5,10 +5,10 @@ from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from pydantic import BaseModel
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from app.database import get_db_session
-from app.database.models import Admin, AvailableSlot, Appointment, User
+from app.database.models import Admin, AvailableSlot, Appointment, User, ConversationHistory
 from app.auth import get_current_admin
 from app.services.appointment_service import AppointmentService
 
@@ -59,6 +59,25 @@ class StatsResponse(BaseModel):
     total_customers: int
 
 
+class ConversationMessageResponse(BaseModel):
+    """Single conversation message."""
+    id: int
+    message: str
+    is_from_user: bool
+    timestamp: str
+
+
+class ConversationHistoryResponse(BaseModel):
+    """Paginated conversation history."""
+    customer_phone: str
+    customer_name: Optional[str]
+    messages: List[ConversationMessageResponse]
+    total_messages: int
+    page: int
+    page_size: int
+    total_pages: int
+
+
 # ============================================================================
 # Appointments Endpoints
 # ============================================================================
@@ -82,7 +101,17 @@ def get_appointments(
     GET /admin/appointments?date=2024-12-05&status=pending
     ```
     """
-    query = db.query(Appointment).join(AvailableSlot).join(User)
+    # Use eager loading to prevent N+1 queries
+    # This loads user and slot data in the same query
+    query = (
+        db.query(Appointment)
+        .join(AvailableSlot)
+        .join(User)
+        .options(
+            joinedload(Appointment.user),
+            joinedload(Appointment.slot)
+        )
+    )
 
     # Filter by date if provided
     if date:
@@ -351,4 +380,95 @@ def get_dashboard_stats(
         pending_confirmations=pending,
         available_slots=available,
         total_customers=total_customers
+    )
+
+
+# ============================================================================
+# Conversation History Endpoint
+# ============================================================================
+
+@router.get("/customers/{phone_number}/conversation", response_model=ConversationHistoryResponse)
+def get_customer_conversation(
+    phone_number: str,
+    page: int = Query(1, ge=1, description="Page number (starts at 1)"),
+    page_size: int = Query(50, ge=1, le=200, description="Messages per page (max 200)"),
+    admin: Admin = Depends(get_current_admin),
+    db: Session = Depends(get_db_session)
+):
+    """
+    Get conversation history for a specific customer with pagination.
+
+    **Path Parameters:**
+    - `phone_number`: Customer's phone number (e.g., +385991234567)
+
+    **Query Parameters:**
+    - `page`: Page number (default: 1)
+    - `page_size`: Messages per page, max 200 (default: 50)
+
+    **Response:**
+    ```json
+    {
+        "customer_phone": "+385991234567",
+        "customer_name": "Ivan Horvat",
+        "messages": [
+            {
+                "id": 123,
+                "message": "Bok, želim zakazati termin",
+                "is_from_user": true,
+                "timestamp": "2024-12-05T14:30:00Z"
+            },
+            ...
+        ],
+        "total_messages": 42,
+        "page": 1,
+        "page_size": 50,
+        "total_pages": 1
+    }
+    ```
+    """
+    # Get user by phone number
+    user = db.query(User).filter(User.phone_number == phone_number).first()
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Customer with phone {phone_number} not found"
+        )
+
+    # Get total message count
+    total_messages = db.query(ConversationHistory).filter(
+        ConversationHistory.user_id == user.id
+    ).count()
+
+    # Calculate pagination
+    total_pages = (total_messages + page_size - 1) // page_size  # Ceiling division
+    offset = (page - 1) * page_size
+
+    # Get paginated messages (newest first)
+    messages = (
+        db.query(ConversationHistory)
+        .filter(ConversationHistory.user_id == user.id)
+        .order_by(ConversationHistory.timestamp.desc())
+        .offset(offset)
+        .limit(page_size)
+        .all()
+    )
+
+    # Build response
+    return ConversationHistoryResponse(
+        customer_phone=user.phone_number,
+        customer_name=user.name,
+        messages=[
+            ConversationMessageResponse(
+                id=msg.id,
+                message=msg.message,
+                is_from_user=msg.is_from_user,
+                timestamp=msg.timestamp.isoformat()
+            )
+            for msg in messages
+        ],
+        total_messages=total_messages,
+        page=page,
+        page_size=page_size,
+        total_pages=total_pages
     )

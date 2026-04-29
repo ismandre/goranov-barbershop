@@ -57,73 +57,75 @@
       <p class="text-gray-400 text-sm mt-2">Pokušajte promijeniti filtere</p>
     </div>
 
-    <!-- Mobile View - Cards -->
-    <div v-else class="lg:hidden space-y-4">
-      <div
-        v-for="appointment in appointments"
-        :key="appointment.id"
-        class="card"
-      >
-        <!-- Status Badge -->
-        <div class="flex justify-between items-start mb-3">
-          <span :class="`badge badge-${appointment.status} text-sm`">
-            {{ getStatusLabel(appointment.status) }}
-          </span>
-          <span class="text-xs text-gray-500">{{ formatDate(appointment.booked_at) }}</span>
-        </div>
+    <!-- Appointments List -->
+    <div v-else>
+      <!-- Mobile View - Cards -->
+      <div class="lg:hidden space-y-4">
+        <div
+          v-for="appointment in appointments"
+          :key="appointment.id"
+          class="card"
+        >
+          <!-- Status Badge -->
+          <div class="flex justify-between items-start mb-3">
+            <span :class="`badge badge-${appointment.status} text-sm`">
+              {{ getStatusLabel(appointment.status) }}
+            </span>
+            <span class="text-xs text-gray-500">{{ formatDate(appointment.booked_at) }}</span>
+          </div>
 
-        <!-- Customer Info -->
-        <div class="mb-4">
-          <div class="flex items-center mb-2">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <span class="font-semibold text-gray-900">{{ appointment.customer_name || 'Nepoznato' }}</span>
+          <!-- Customer Info -->
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <span class="font-semibold text-gray-900">{{ appointment.customer_name || 'Nepoznato' }}</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>{{ appointment.customer_phone }}</span>
+            </div>
           </div>
-          <div class="flex items-center text-gray-600">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span>{{ appointment.customer_phone }}</span>
-          </div>
-        </div>
 
-        <!-- DateTime Info -->
-        <div class="mb-4 p-3 bg-gray-50 rounded-lg">
-          <div class="flex items-center mb-1">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span class="font-medium text-gray-900">{{ formatDate(appointment.start_time) }}</span>
+          <!-- DateTime Info -->
+          <div class="mb-4 p-3 bg-gray-50 rounded-lg">
+            <div class="flex items-center mb-1">
+              <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span class="font-medium text-gray-900">{{ formatDate(appointment.start_time) }}</span>
+            </div>
+            <div class="flex items-center text-gray-700">
+              <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{{ formatTime(appointment.start_time) }} - {{ formatTime(appointment.end_time) }}</span>
+            </div>
           </div>
-          <div class="flex items-center text-gray-700">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>{{ formatTime(appointment.start_time) }} - {{ formatTime(appointment.end_time) }}</span>
-          </div>
-        </div>
 
-        <!-- Status Update -->
-        <div>
-          <label class="label text-sm mb-2">Promijeni status</label>
-          <select
-            :value="appointment.status"
-            @change="updateStatus(appointment.id, $event.target.value)"
-            class="input text-base w-full"
-          >
-            <option value="pending">Na čekanju</option>
-            <option value="confirmed">Potvrđeno</option>
-            <option value="completed">Završeno</option>
-            <option value="cancelled">Otkazano</option>
-            <option value="no_show">Nije se pojavio</option>
-          </select>
+          <!-- Status Update -->
+          <div>
+            <label class="label text-sm mb-2">Promijeni status</label>
+            <select
+              :value="appointment.status"
+              @change="updateStatus(appointment.id, $event.target.value)"
+              class="input text-base w-full"
+            >
+              <option value="pending">Na čekanju</option>
+              <option value="confirmed">Potvrđeno</option>
+              <option value="completed">Završeno</option>
+              <option value="cancelled">Otkazano</option>
+              <option value="no_show">Nije se pojavio</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Desktop View - Table -->
-    <div v-else class="card hidden lg:block">
+      <!-- Desktop View - Table -->
+      <div class="card hidden lg:block">
       <div class="overflow-x-auto">
         <table class="w-full">
           <thead class="bg-gray-50 border-b border-gray-200">
@@ -171,6 +173,7 @@
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </div>

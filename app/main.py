@@ -1,16 +1,39 @@
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import Response
+from fastapi.middleware.cors import CORSMiddleware
 from twilio.twiml.messaging_response import MessagingResponse
 
 from .logic.state_machine import handle_state_transition
+from .api import auth, admin
 
-app = FastAPI(title="Goranov Barbershop Bot")
+app = FastAPI(
+    title="Goranov Barbershop Bot",
+    description="WhatsApp-based appointment booking system with admin API",
+    version="1.0.0"
+)
+
+# CORS middleware (for admin dashboard)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify your dashboard domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers
+app.include_router(auth.router)
+app.include_router(admin.router)
 
 
 @app.get("/")
 async def root():
     """Health check endpoint."""
-    return {"status": "ok", "message": "Goranov Barbershop WhatsApp Bot is running"}
+    return {
+        "status": "ok",
+        "message": "Goranov Barbershop WhatsApp Bot is running",
+        "version": "1.0.0"
+    }
 
 
 @app.post("/whatsapp/webhook")

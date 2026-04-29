@@ -2,7 +2,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 
-from logic.state_machine import handle_state_transition
+from .logic.state_machine import handle_state_transition
 
 app = FastAPI(title="Goranov Barbershop Bot")
 
